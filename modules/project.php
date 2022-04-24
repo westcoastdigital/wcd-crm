@@ -177,8 +177,8 @@ function build_new_table($tasks){
         
         $html .= '<tr class="item-row">';
 
-            if(array_key_exists('wcd_exp_description', $value)) :
-            $html .= '<td>' . $value['wcd_contact_task_description'] . '</td>';
+            if(array_key_exists('wcd_contact_task_name', $value)) :
+            $html .= '<td>' . $value['wcd_contact_task_name'] . '</td>';
             endif;
             if(array_key_exists('wcd_contact_task_style', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_style'] . '</td>';
