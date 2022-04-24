@@ -172,6 +172,7 @@ function print_project_pdf(){
 
 function build_new_table($tasks){
     // data rows
+    $html = '';
     foreach( $tasks as $key=>$value){
         
         $html .= '<tr class="item-row">';
