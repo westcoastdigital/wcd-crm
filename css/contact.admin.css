@@ -1,0 +1,46 @@
+div#wcd_contact_contact {
+    height: 300px;
+}
+
+#wcd_contact_tasks .rwmb-clone {
+    border-bottom: none !important;
+}
+
+/* Add margins between the rows of the contact form. */
+
+#contact-form,
+#contact-form #validation-messages-container {
+    max-width: 400px;
+}
+
+#contact-form .form-section {
+    margin: 20px 0;
+}
+
+#contact-form label {
+    display: block;
+}
+
+/* Make the input field large as the form container. */
+#contact-form input[type="text"],
+#contact-form textarea {
+    width: 100%;
+}
+
+/* Style the validation errors */
+.validation-message {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: #fff;
+    border: 3px solid #cc0000;
+    max-width: 400px;
+}
+
+/* Style the success message */
+.success-message {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: #fff;
+    border: 3px solid #00cc00;
+    max-width: 400px;
+}

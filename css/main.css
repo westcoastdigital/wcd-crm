@@ -1,0 +1,111 @@
+html {
+    overflow-y: scroll;
+}
+.grid-sizer { width: 20%;}
+.wcd-masonry-gallery { width: 20%; }
+
+@media screen and (max-width: 1224px) {
+  .grid-sizer { width: 33.33%; }
+  .wcd-masonry-gallery { width: 33.33%; }
+}
+
+@media screen and (max-width: 720px) {
+  .grid-sizer { width: 50%; }
+  .wcd-masonry-gallery { width: 50%; }
+}
+
+@media screen and (max-width: 480px) {
+  .grid-sizer { width: 100%; }
+  .wcd-masonry-gallery { width: 100%; }
+}
+
+.gallery-image {
+    max-width: 100%;
+    margin: 0;
+    display: block;
+}
+
+.featherlight-previous {
+    position: absolute;
+    top: 0%;
+    left: 5px;
+}
+
+.featherlight-next {
+    position: absolute;
+    top: 0%;
+    left: 25px;
+}
+
+.featherlight .featherlight-close-icon {
+    font-size: 28px;
+    line-height: 120%;
+    color: #00a0d2;
+}
+
+.wcd-pdf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space;
+}
+
+.print-item {
+    width: 300px;
+    padding: 5px;
+}
+
+.print-item img {
+    width: 300px;
+}
+
+.printBtn {
+    padding: 10px 30px;
+    border-radius: 5px;
+    line-height: 140%;
+    margin: 20px;
+    background: #00a0d2;
+    border-color: #0073aa;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    color: #fff;
+    text-decoration: none;
+}
+
+.printBtn:hover {
+    background: #0073aa;
+    color: #fff;
+}
+
+.button {
+    text-align: center;
+    height: 50px;
+}
+
+.print-gallery-image { 
+    cursor: pointer;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    border-width: 4px;
+}
+
+.checked {
+    border: solid 4px #00a0d2;
+}
+
+img.hor-img { max-height: 400px ; }
+/* Print Styles */
+
+.wcd-horizontalGallery {
+    height: 500px;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+.wcd-horizontalGallery img { width: auto; }
+
+@media print {
+    .print-gallery-image { display: none; }
+    .print-gallery-image.checked { display: block; border-color: rgba(0,0,0,0); }
+    .print-gallery-image { width: 100px; height: auto; }
+}
