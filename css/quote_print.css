@@ -57,3 +57,9 @@ input.QuotePrintBtn:hover {background: #0073aa;color: #fff;}
     .button { display: none; }
     #quote-print { padding: 0px; }
 }
+
+.clear::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

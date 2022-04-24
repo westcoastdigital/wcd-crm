@@ -401,6 +401,23 @@ class WCD_Meta_Box
 				} );
 			} );
 
+			$( '#wcd_client_wcd_name' ).on( 'change', function()
+			{
+				var $this	 = $(this),
+					$post_id = $this.val();
+
+				$.get( ajaxurl, {
+					'action' : 'get_customer_info',
+					'customer_id' : $post_id
+				}, function( response ) 
+				{
+					$( '#wcd_client_wcd_address' ).val( response.address );
+					$( '#wcd_client_wcd_phone' ).val( response.phone );
+					$( '#wcd_client_wcd_company' ).val( response.company );
+					$( '#wcd_client_wcd_email' ).val( response.email );
+				} );
+			} );
+
 			$( '#wcd_quote_name' ).on( 'change', function()
 			{
 				var $this	 = $(this),

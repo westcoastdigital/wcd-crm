@@ -3,7 +3,7 @@
 Plugin Name: WCD CRM
 Plugin URI: https://beaverlodgehq.com/
 Description: A CRM tool including Project Management, Quote Tool, Products and Task management.
-Version: 2.0.0
+Version: 2.0.1
 Author: West Coast Digital
 Author URI: https://westcoastdigital.com.au
 */
@@ -463,4 +463,12 @@ function display_contact_form() {
 
 	<?php
 
+}
+
+function quote_logo_info() {
+    return $settings['quote_logo'] ?? false;
+}
+
+function quote_currency_info() {
+    return $settings['quote_currency'] ?? false;
 }

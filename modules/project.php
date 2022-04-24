@@ -176,11 +176,21 @@ function build_new_table($tasks){
         
         $html .= '<tr class="item-row">';
 
+            if(array_key_exists('wcd_exp_description', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_description'] . '</td>';
+            endif;
+            if(array_key_exists('wcd_contact_task_style', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_style'] . '</td>';
+            endif;
+            if(array_key_exists('wcd_contact_task_due', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_due'] . '</td>';
+            endif;
+            if(array_key_exists('wcd_contact_task_status', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_status'] . '</td>';
+            endif;
+            if(array_key_exists('wcd_contact_task_date_completed', $value)) :
             $html .= '<td>' . $value['wcd_contact_task_date_completed'] . '</td>';
+            endif;
 
         $html .= '</tr>';
         
@@ -192,21 +202,43 @@ function build_new_table($tasks){
 
 function build_exp_table($expenses){
     $yourcurrency = quote_currency_info();
-    // data rows
-    foreach( $expenses as $key=>$value){
-        
-        $html .= '<tr class="item-row">';
+    $html = '';
+    if($expenses) :
+        foreach( $expenses as $key=>$value){
 
-            $html .= '<td>' . $value['wcd_exp_description'] . '</td>';
-            $html .= '<td>' . $value['wcd_exp_qty'] . '</td>';
-            $html .= '<td>' . $yourcurrency . '&nbsp;' . $value['wcd_exp_cost'] . '</td>';
-            $html .= '<td>' . $value['wcd_exp_tax'] . '%</td>';
-            $html .= '<td>' . $yourcurrency . '&nbsp;' . $value['wcd_exp_total'] . '</td>';
+            $html .= '<tr class="item-row">';
 
-        $html .= '</tr>';
-        
+                if(array_key_exists('wcd_exp_description', $value)) :
+                    $html .= '<td>' . $value['wcd_exp_description'] . '</td>';
+                else :
+                    $html .= '<td></td>';
+                endif;
+                if(array_key_exists('wcd_exp_qty', $value)) :
+                $html .= '<td>' . $value['wcd_exp_qty'] . '</td>';
+                else :
+                    $html .= '<td></td>';
+                endif;
+                if(array_key_exists('wcd_exp_cost', $value)) :
+                $html .= '<td>' . $yourcurrency . '&nbsp;' . $value['wcd_exp_cost'] . '</td>';
+                else :
+                    $html .= '<td></td>';
+                endif;
+                if(array_key_exists('wcd_exp_tax', $value)) :
+                $html .= '<td>' . $value['wcd_exp_tax'] . '%</td>';
+                else :
+                    $html .= '<td></td>';
+                endif;
+                if(array_key_exists('wcd_exp_total', $value)) :
+                $html .= '<td>' . $yourcurrency . '&nbsp;' . $value['wcd_exp_total'] . '</td>';
+                else :
+                    $html .= '<td></td>';
+                endif;
 
-    }
+            $html .= '</tr>';
+            
+
+        }
+    endif;
 
     return $html;
 }
@@ -215,7 +247,9 @@ function get_expense_total($expenses){
     
     $total=0;
     foreach( $expenses as $key=>$value){
+        if(array_key_exists('wcd_exp_total', $value)) :
         $total+=$value['wcd_exp_total'];
+        endif;
     }
     return $total;
 

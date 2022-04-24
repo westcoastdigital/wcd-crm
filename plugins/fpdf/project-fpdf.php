@@ -22,12 +22,12 @@ while ( $loop->have_posts() ) : $loop->the_post();
 
 <div id="identity">
     <?php
-        $yourcompany = quote_company_info();
-        $yourname = quote_name_info();
-        $youremail = quote_email_info();
-        $yourphone = quote_phone_info();
-        $youraddress = quote_address_info();
-        $yourlogo = quote_logo_info();
+        $yourcompany = $settings['quote_company'];
+        $yourname = $settings['quote_name'];
+        $youremail = $settings['quote_email'];
+        $yourphone = $settings['quote_phone'];
+        $youraddress = $settings['quote_company'];
+        $yourlogo = $settings['quote_logo'];
     ?>
     
         <div id="logo" style="margin-top: 0; position: relative; top: -100px;">
@@ -48,19 +48,27 @@ while ( $loop->have_posts() ) : $loop->the_post();
             
             <?php
             $customer = rwmb_meta( 'wcd_client', 'type=text' );
-            $custcompany = $customer[wcd_company];
-            $custname = $customer['wcd_name'];
-            $custaddress = $customer[wcd_address];
-            $custemail = $customer[wcd_email];
-            $custphone = $customer[wcd_phone];
-            $yourcurrency = quote_currency_info();
+            $custcompany = $customer['wcd_company'];
+            $custname = $customer['wcd_name'] ?? false;
+            $custaddress = $customer['wcd_address'] ?? false;
+            $custemail = $customer['wcd_email'] ?? false;
+            $custphone = $customer['wcd_phone'] ?? false;
+            $yourcurrency = $settings['quote_currency'];
             ?>
             
         <div id="cust-address" style="float: right;">
+            <?php if($custcompany) : ?>
             Company: <?php echo $custcompany; ?> <br />
+            <?php endif; ?>
+            <?php if($custaddress) : ?>
             Address: <?php echo $custaddress; ?> <br />
+            <?php endif; ?>
+            <?php if($custemail) : ?>
             Email: <?php echo $custemail; ?><br />
+            <?php endif; ?>
+            <?php if($custphone) : ?>
             Phone: <?php echo $custphone; ?>
+            <?php endif; ?>
         </div>    
         
             <div class="clear"></div>
@@ -81,8 +89,9 @@ while ( $loop->have_posts() ) : $loop->the_post();
 		<?php
             
             $tasks = rwmb_meta( 'wcd_contact_tasks', 'type=group' );
+            if($tasks) :
             echo build_new_table($tasks);
-            //var_dump($tasks);
+            endif;
         ?>
 		</table>
 		    
@@ -102,8 +111,9 @@ while ( $loop->have_posts() ) : $loop->the_post();
 		<?php
             
             $expenses = rwmb_meta( 'wcd_expenses', 'type=group' );
+            if($expenses) :
             echo build_exp_table($expenses);
-
+            endif;
         ?>   
           
         <tr style="height: 50px;">
